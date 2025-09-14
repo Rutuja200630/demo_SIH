@@ -15,9 +15,9 @@ export default function NavBar() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur border-b border-white/10 bg-background/60">
       <div className="container mx-auto flex items-center justify-between py-3">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-500 shadow-[0_0_20px_rgba(99,102,241,.6)]" />
-          <span className="font-extrabold tracking-tight text-lg">{t("appName")}</span>
+        <Link to="/" className="flex items-center gap-2" aria-label="Orchid AI — Home">
+          <img src="/icons/orchid.svg" alt="Orchid AI" className="h-8 w-8" />
+          <span className="font-extrabold tracking-tight text-lg">Orchid AI — Smart Tourist Safety</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1">
           <NavLink to="/" className={navItem}>{t("nav.home")}</NavLink>

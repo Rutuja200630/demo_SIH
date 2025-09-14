@@ -4,7 +4,7 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      appName: "Smart Tourist Safety",
+      appName: "Orchid AI — Smart Tourist Safety",
       tagline: "Real-time monitoring & instant response",
       ctaGetId: "Get Digital ID",
       ctaLogin: "Police/Admin Login",
@@ -28,7 +28,7 @@ const resources = {
   },
   hi: {
     translation: {
-      appName: "स्मार्ट टूरिस्ट सेफ़्टी",
+      appName: "Orchid AI — स्मार्ट टूरिस्ट सेफ़्टी",
       tagline: "रियल-टाइम निगरानी और त्वरित प्रतिक्रिया",
       ctaGetId: "डिजिटल आईडी प्राप्त करें",
       ctaLogin: "पुलिस/एडमिन लॉगिन",
