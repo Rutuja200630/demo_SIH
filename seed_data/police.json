@@ -1,0 +1,16 @@
+[
+  {
+    "officerId": "p101",
+    "name": "Inspector Mehta",
+    "station": "Lucknow Central",
+    "location": { "lat": 26.8467, "lng": 80.9462 },
+    "contact": "+91-9123456780"
+  },
+  {
+    "officerId": "p102",
+    "name": "SI Sharma",
+    "station": "Dehradun North",
+    "location": { "lat": 30.3165, "lng": 78.0322 },
+    "contact": "+91-9345678901"
+  }
+]

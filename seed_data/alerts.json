@@ -1,0 +1,12 @@
+[
+  { "alertId": "a1", "userId": "t123", "type": "panic", "location": { "lat": 26.85, "lng": 80.95 }, "severity": "high", "status": "active", "createdAt": "2025-09-14T10:00:00Z" },
+  { "alertId": "a2", "userId": "t124", "type": "geofence_breach", "location": { "lat": 30.07, "lng": 79.03 }, "severity": "medium", "status": "resolved", "createdAt": "2025-09-14T09:30:00Z" },
+  { "alertId": "a3", "userId": "t125", "type": "low_battery", "location": { "lat": 27.2, "lng": 78.01 }, "severity": "low", "status": "active", "createdAt": "2025-09-14T09:10:00Z" },
+  { "alertId": "a4", "userId": "t126", "type": "panic", "location": { "lat": 23.26, "lng": 77.42 }, "severity": "high", "status": "active", "createdAt": "2025-09-14T11:12:00Z" },
+  { "alertId": "a5", "userId": "t127", "type": "geofence_breach", "location": { "lat": 22.57, "lng": 88.37 }, "severity": "medium", "status": "resolved", "createdAt": "2025-09-14T07:50:00Z" },
+  { "alertId": "a6", "userId": "t123", "type": "panic", "location": { "lat": 26.83, "lng": 80.97 }, "severity": "high", "status": "active", "createdAt": "2025-09-14T10:40:00Z" },
+  { "alertId": "a7", "userId": "t124", "type": "low_battery", "location": { "lat": 30.06, "lng": 79.01 }, "severity": "low", "status": "active", "createdAt": "2025-09-14T09:45:00Z" },
+  { "alertId": "a8", "userId": "t125", "type": "panic", "location": { "lat": 27.19, "lng": 78.00 }, "severity": "high", "status": "active", "createdAt": "2025-09-14T08:35:00Z" },
+  { "alertId": "a9", "userId": "t126", "type": "geofence_breach", "location": { "lat": 23.25, "lng": 77.40 }, "severity": "medium", "status": "resolved", "createdAt": "2025-09-14T11:00:00Z" },
+  { "alertId": "a10", "userId": "t127", "type": "panic", "location": { "lat": 22.58, "lng": 88.36 }, "severity": "high", "status": "active", "createdAt": "2025-09-14T07:53:00Z" }
+]

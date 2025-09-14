@@ -1,0 +1,67 @@
+[
+  {
+    "_id": "t123",
+    "name": "Alice Kumar",
+    "email": "alice@example.com",
+    "phone": "+91-9812345678",
+    "kyc": { "type": "passport", "number_hash": "sha256:abc" },
+    "blockchainId": "bc_0xabc123",
+    "verificationStatus": "verified",
+    "safetyScore": 78,
+    "lastLocation": { "lat": 26.8467, "lng": 80.9462, "timestamp": "2025-09-14T10:00:00Z" },
+    "itinerary": [ { "from": "Lucknow", "to": "Kedarnath", "start": "2025-09-10", "end": "2025-09-14" } ],
+    "createdAt": "2025-09-01T10:00:00Z"
+  },
+  {
+    "_id": "t124",
+    "name": "Raj Verma",
+    "email": "raj@example.com",
+    "phone": "+91-9898989898",
+    "kyc": { "type": "aadhaar", "number_hash": "sha256:def" },
+    "blockchainId": "bc_0xdef456",
+    "verificationStatus": "pending",
+    "safetyScore": 64,
+    "lastLocation": { "lat": 30.0668, "lng": 79.0193, "timestamp": "2025-09-14T09:00:00Z" },
+    "itinerary": [ { "from": "Haridwar", "to": "Rishikesh", "start": "2025-09-12", "end": "2025-09-15" } ],
+    "createdAt": "2025-09-02T12:00:00Z"
+  },
+  {
+    "_id": "t125",
+    "name": "Sara Iqbal",
+    "email": "sara@example.com",
+    "phone": "+91-9777777777",
+    "kyc": { "type": "passport", "number_hash": "sha256:ghi" },
+    "blockchainId": "bc_0xghi789",
+    "verificationStatus": "verified",
+    "safetyScore": 82,
+    "lastLocation": { "lat": 27.1767, "lng": 78.0081, "timestamp": "2025-09-14T08:30:00Z" },
+    "itinerary": [ { "from": "Agra", "to": "Jaipur", "start": "2025-09-13", "end": "2025-09-17" } ],
+    "createdAt": "2025-09-03T15:20:00Z"
+  },
+  {
+    "_id": "t126",
+    "name": "Priya Singh",
+    "email": "priya@example.com",
+    "phone": "+91-9666666666",
+    "kyc": { "type": "passport", "number_hash": "sha256:jkl" },
+    "blockchainId": "bc_0xjkl012",
+    "verificationStatus": "pending",
+    "safetyScore": 58,
+    "lastLocation": { "lat": 23.2599, "lng": 77.4126, "timestamp": "2025-09-14T11:10:00Z" },
+    "itinerary": [ { "from": "Bhopal", "to": "Khajuraho", "start": "2025-09-11", "end": "2025-09-14" } ],
+    "createdAt": "2025-09-04T18:00:00Z"
+  },
+  {
+    "_id": "t127",
+    "name": "John Das",
+    "email": "john@example.com",
+    "phone": "+91-9555555555",
+    "kyc": { "type": "aadhaar", "number_hash": "sha256:mno" },
+    "blockchainId": "bc_0xmno345",
+    "verificationStatus": "verified",
+    "safetyScore": 71,
+    "lastLocation": { "lat": 22.5726, "lng": 88.3639, "timestamp": "2025-09-14T07:45:00Z" },
+    "itinerary": [ { "from": "Kolkata", "to": "Darjeeling", "start": "2025-09-12", "end": "2025-09-16" } ],
+    "createdAt": "2025-09-05T09:40:00Z"
+  }
+]
