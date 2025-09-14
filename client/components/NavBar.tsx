@@ -17,7 +17,7 @@ export default function NavBar() {
       <div className="container mx-auto flex items-center justify-between py-3">
         <Link to="/" className="flex items-center gap-2" aria-label="Orchid AI — Home">
           <img src="/icons/orchid.svg" alt="Orchid AI" className="h-8 w-8" />
-          <span className="font-extrabold tracking-tight text-lg">Orchid AI — Smart Tourist Safety</span>
+          <span className="font-extrabold tracking-tight text-lg">YatraRakshak</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1">
           <NavLink to="/" className={navItem}>{t("nav.home")}</NavLink>
