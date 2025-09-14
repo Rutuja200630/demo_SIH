@@ -86,13 +86,12 @@ export default function Hero3DGlobe() {
           className="space-y-6"
         >
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-amber-300 to-rose-300 drop-shadow">Discover the World, Your Way</span>
-            <div className="mt-3 text-foreground/80 text-xl md:text-2xl">{t("tagline")}</div>
+            Travel with Confidence. Your Safety, Secured by India.
           </h1>
-          <p className="text-foreground/70 max-w-xl">Frictionless planning, immersive maps, and instant safety — tailored to your journey.</p>
+          <p className="text-foreground/70 max-w-xl">YatraRakshak provides a secure Digital Tourist ID, backed by AI and Blockchain, for a safer and smarter travel experience across India.</p>
           <div className="flex flex-wrap gap-3">
-            <Link to="/tourist/dashboard" className="px-5 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-amber-400 text-white font-semibold shadow-[0_0_30px_rgba(14,165,233,.5)]">Explore Now</Link>
-            <Link to="/auth/register" className="px-5 py-3 rounded-xl border border-white/20 backdrop-blur bg-white/10 hover:bg-white/20 transition">Plan My Trip</Link>
+            <Link to="/auth/register" className="px-5 py-3 rounded-xl bg-primary text-primary-foreground font-semibold">Apply for Digital ID</Link>
+            <a href="#how-it-works" className="px-5 py-3 rounded-xl border border-white/20 backdrop-blur hover:bg-white/10 transition">Learn How It Works</a>
           </div>
           <div className="flex items-center gap-4 text-foreground/80 pt-2">
             <span className="inline-flex items-center gap-2"><Plane size={18} /> Real‑time travel safety</span>
