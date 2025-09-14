@@ -1,18 +1,14 @@
-import HeroParallax from "@/components/HeroParallax";
-import FeatureStrip from "@/components/FeatureStrip";
-import AIPlanning from "@/components/AIPlanning";
-import InteractiveIndiaMap from "@/components/InteractiveIndiaMap";
-import StoryTimeline from "@/components/StoryTimeline";
+import SafeHero from "@/components/SafeHero";
+import StatsPanel from "@/components/StatsPanel";
+import HowItWorks from "@/components/HowItWorks";
 import SiteFooter from "@/components/SiteFooter";
 
 export default function Index() {
   return (
     <main>
-      <HeroParallax />
-      <FeatureStrip />
-      <InteractiveIndiaMap />
-      <AIPlanning />
-      <StoryTimeline />
+      <SafeHero />
+      <StatsPanel />
+      <HowItWorks />
       <section className="container mx-auto py-12 grid md:grid-cols-3 gap-6">
         <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
           <div className="font-semibold mb-2">Real-time Maps</div>

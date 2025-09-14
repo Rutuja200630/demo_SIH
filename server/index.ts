@@ -18,7 +18,22 @@ type Alert = {
 };
 
 let alerts: Alert[] = [];
-let tourists: any[] = [];
+type Tourist = {
+  _id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  itinerary?: string;
+  emergencyName?: string;
+  emergencyPhone?: string;
+  documentType?: "aadhaar" | "passport";
+  documentNumber?: string;
+  documentFileName?: string;
+  verificationStatus: "pending" | "verified" | "rejected";
+  blockchainId?: string;
+  applicationDate?: string;
+};
+let tourists: Tourist[] = [];
 
 function loadSeedData() {
   try {
@@ -52,13 +67,22 @@ export function createServer() {
 
   // Auth (mocked)
   app.post("/api/auth/register", (req, res) => {
-    const { name, email } = req.body ?? {};
-    const userId = `t${Math.floor(Math.random() * 10000)}`;
-    const record = {
+    const { name, email, phone, password, itinerary, emergencyName, emergencyPhone, documentType, documentNumber, documentFileName } = req.body ?? {};
+    if (!name || !email) return res.status(400).json({ error: "invalid_input" });
+    const userId = `t${Date.now()}`;
+    const record: Tourist = {
       _id: userId,
       name,
       email,
+      phone,
+      itinerary,
+      emergencyName,
+      emergencyPhone,
+      documentType,
+      documentNumber,
+      documentFileName,
       verificationStatus: "pending",
+      applicationDate: new Date().toISOString(),
     };
     tourists.push(record);
     res.json({ success: true, userId, status: "pending_verification" });
@@ -115,6 +139,39 @@ export function createServer() {
     }
 
     res.json({ success: true, alertId: id });
+  });
+
+  // Admin verification APIs
+  app.get("/api/admin/pending-verifications", (_req, res) => {
+    const pending = tourists.filter((t) => t.verificationStatus === "pending");
+    res.json({ data: pending });
+  });
+
+  app.post("/api/admin/approve/:userId", async (req, res) => {
+    const { userId } = req.params;
+    const t = tourists.find((x) => x._id === userId);
+    if (!t) return res.status(404).json({ error: "not_found" });
+    try {
+      const r = await fetch(`${BLOCKCHAIN_API_URL}/createID`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ name: t.name, documentType: t.documentType, documentNumber: t.documentNumber }),
+      });
+      const json = await r.json();
+      t.blockchainId = json?.blockchainId ?? `bc_${userId}`;
+      t.verificationStatus = "verified";
+      return res.json({ success: true, blockchainId: t.blockchainId });
+    } catch (e: any) {
+      return res.status(502).json({ error: "blockchain_error", details: e?.message });
+    }
+  });
+
+  app.post("/api/admin/reject/:userId", (req, res) => {
+    const { userId } = req.params;
+    const t = tourists.find((x) => x._id === userId);
+    if (!t) return res.status(404).json({ error: "not_found" });
+    t.verificationStatus = "rejected";
+    res.json({ success: true });
   });
 
   // Bridge proxies
