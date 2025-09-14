@@ -1,4 +1,4 @@
-import HeroParallax from "@/components/HeroParallax";
+import Hero3DGlobe from "@/components/Hero3DGlobe";
 import StatsPanel from "@/components/StatsPanel";
 import HowItWorks from "@/components/HowItWorks";
 import SiteFooter from "@/components/SiteFooter";
@@ -6,7 +6,7 @@ import SiteFooter from "@/components/SiteFooter";
 export default function Index() {
   return (
     <main>
-      <HeroParallax />
+      <Hero3DGlobe />
       <StatsPanel />
       <HowItWorks />
       <section className="container mx-auto py-12 grid md:grid-cols-3 gap-6">
