@@ -1,29 +1,378 @@
+import { motion } from "framer-motion";
+import { ArrowRight, Shield, Users, Zap, Heart } from "lucide-react";
 import SafeHero from "@/components/SafeHero";
 import StatsPanel from "@/components/StatsPanel";
 import HowItWorks from "@/components/HowItWorks";
 import SiteFooter from "@/components/SiteFooter";
+import HeritageCarousel from "@/components/HeritageCarousel";
+import IndianPatternBackground from "@/components/IndianPatternBackground";
+
+function EnhancedCTAButton({ 
+  href, 
+  children, 
+  variant = "primary", 
+  icon: Icon 
+}: { 
+  href: string; 
+  children: React.ReactNode; 
+  variant?: "primary" | "secondary"; 
+  icon?: any;
+}) {
+  const isPrimary = variant === "primary";
+  
+  return (
+    <motion.a
+      href={href}
+      whileHover={{ 
+        scale: 1.05, 
+        boxShadow: isPrimary 
+          ? "0 0 30px rgba(99,102,241,0.6)" 
+          : "0 0 20px rgba(255,255,255,0.2)"
+      }}
+      whileTap={{ scale: 0.95 }}
+      className={`group inline-flex items-center gap-3 font-semibold px-8 py-4 rounded-xl transition-all duration-300 ${
+        isPrimary
+          ? "bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-[0_0_20px_rgba(99,102,241,0.3)]"
+          : "border-2 border-primary/30 hover:border-primary hover:bg-primary/10 text-foreground/90 hover:text-primary"
+      }`}
+    >
+      {Icon && <Icon className="w-5 h-5 group-hover:scale-110 transition-transform" />}
+      {children}
+      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+    </motion.a>
+  );
+}
+
+function FeatureCard({ 
+  icon: Icon, 
+  title, 
+  description, 
+  delay = 0 
+}: { 
+  icon: any; 
+  title: string; 
+  description: string; 
+  delay?: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.6 }}
+      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      className="group p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
+    >
+      <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
+        <Icon className="w-6 h-6 text-primary" />
+      </div>
+      <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
+      <p className="text-sm text-white/80 leading-relaxed">{description}</p>
+    </motion.div>
+  );
+}
+
+function TestimonialCard({ 
+  quote, 
+  author, 
+  role, 
+  delay = 0 
+}: { 
+  quote: string; 
+  author: string; 
+  role: string; 
+  delay?: number;
+}) {
+  return (
+    <motion.blockquote
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.6 }}
+      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+      className="p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
+    >
+      <div className="mb-4">
+        <Heart className="w-5 h-5 text-red-400 mb-2" />
+        <p className="text-white/90 text-base leading-relaxed">"{quote}"</p>
+      </div>
+      <footer className="text-sm text-white/70">
+        <div className="font-medium text-white/90">— {author}</div>
+        <div>{role}</div>
+      </footer>
+    </motion.blockquote>
+  );
+}
 
 export default function Index() {
   return (
-    <main>
-      <SafeHero />
-      <StatsPanel />
-      <HowItWorks />
-      <section className="container mx-auto py-12 grid md:grid-cols-3 gap-6">
-        <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
-          <div className="font-semibold mb-2">Real-time Maps</div>
-          <p className="text-sm text-foreground/70">OpenStreetMap + geofences to visualize safety at a glance.</p>
+    <main className="landing-hero-bg min-h-screen relative">
+      <IndianPatternBackground />
+      <div className="relative z-10">
+        <SafeHero />
+
+      {/* Enhanced Main CTA Section - No duplicate map */}
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="max-w-6xl mx-auto px-6 py-16"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            <div className="space-y-6">
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+                Discover Safer Journeys —{" "}
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  Explore Confidently
+                </span>
+              </h1>
+              <p className="text-lg text-white/85 leading-relaxed max-w-xl">
+                Real-time safety insights, localized advisories and trusted resources to help 
+                travelers and communities make better decisions. Built for tourists, local responders and planners.
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <EnhancedCTAButton 
+                href="/tourist/dashboard" 
+                variant="primary"
+                icon={Shield}
+              >
+                Get Started
+              </EnhancedCTAButton>
+              <EnhancedCTAButton 
+                href="/police/dashboard" 
+                variant="secondary"
+                icon={Users}
+              >
+                View Live Data
+              </EnhancedCTAButton>
+            </div>
+            
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-sm text-white/70 flex items-center gap-2"
+            >
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              Supports English and local languages — Real-time monitoring — 24/7 support
+            </motion.p>
+          </motion.div>
+          
+          {/* Replace map with feature highlights */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="space-y-6">
+              {/* Safety Features Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center mb-3">
+                    <Shield className="w-5 h-5 text-green-400" />
+                  </div>
+                  <h3 className="font-semibold text-white text-sm">AI Safety Scoring</h3>
+                  <p className="text-xs text-white/70 mt-1">Real-time risk assessment</p>
+                </motion.div>
+                
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center mb-3">
+                    <Zap className="w-5 h-5 text-blue-400" />
+                  </div>
+                  <h3 className="font-semibold text-white text-sm">Instant Alerts</h3>
+                  <p className="text-xs text-white/70 mt-1">Emergency response system</p>
+                </motion.div>
+                
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center mb-3">
+                    <Users className="w-5 h-5 text-purple-400" />
+                  </div>
+                  <h3 className="font-semibold text-white text-sm">Community Network</h3>
+                  <p className="text-xs text-white/70 mt-1">Connected safety ecosystem</p>
+                </motion.div>
+                
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center mb-3">
+                    <Heart className="w-5 h-5 text-orange-400" />
+                  </div>
+                  <h3 className="font-semibold text-white text-sm">Cultural Guidance</h3>
+                  <p className="text-xs text-white/70 mt-1">Local insights & tips</p>
+                </motion.div>
+              </div>
+              
+              {/* Live Statistics */}
+              <div className="p-6 rounded-xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 backdrop-blur">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  <span className="text-sm text-white/90 font-medium">Live System Status</span>
+                </div>
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <div className="text-2xl font-bold text-green-400">99.9%</div>
+                    <div className="text-xs text-white/70">Uptime</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-blue-400">&lt; 2s</div>
+                    <div className="text-xs text-white/70">Response Time</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
-        <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
-          <div className="font-semibold mb-2">Instant Alerts</div>
-          <p className="text-sm text-foreground/70">Tourist panic alerts stream to dashboards via Socket.IO.</p>
-        </div>
-        <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
-          <div className="font-semibold mb-2">Plug‑and‑Play AI & Blockchain</div>
-          <p className="text-sm text-foreground/70">Swap services by changing a single env var — no code changes.</p>
+      </motion.section>
+
+      {/* Enhanced Trust Section */}
+      <section className="bg-white/3 border-t border-white/6 py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl text-white font-bold mb-4">Why people trust us</h2>
+            <p className="text-white/70 max-w-2xl mx-auto">
+              Trusted by thousands of travelers and supported by government authorities
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <FeatureCard
+              icon={Zap}
+              title="Realtime Alerts"
+              description="Stay informed with timely alerts and incident summaries curated from verified sources. Our AI-powered system ensures you get the most relevant safety information."
+              delay={0}
+            />
+            <FeatureCard
+              icon={Shield}
+              title="Localized Guidance"
+              description="Localized safety tips and language-aware labels make navigation easier for visitors. Experience India with confidence and cultural awareness."
+              delay={0.1}
+            />
+            <FeatureCard
+              icon={Users}
+              title="Community Partnerships"
+              description="We partner with local authorities and tourist bodies to keep info accurate and trustworthy. Official government backing ensures reliability."
+              delay={0.2}
+            />
+          </div>
         </div>
       </section>
+
+      {/* Enhanced Testimonials */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl text-white font-bold mb-4">What travellers say</h2>
+          <p className="text-white/70 max-w-2xl mx-auto">
+            Real experiences from tourists and responders using our platform
+          </p>
+        </motion.div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <TestimonialCard
+            quote="The live map helped me choose safer routes every day — super handy and easy to use. I felt much more confident exploring new places."
+            author="Asha"
+            role="International Tourist"
+            delay={0}
+          />
+          <TestimonialCard
+            quote="Local alerts were clear and timely — improved coordination for our team. The real-time updates made our response much more effective."
+            author="Inspector R."
+            role="Local Law Enforcement"
+            delay={0.1}
+          />
+          <TestimonialCard
+            quote="The bilingual labels are a lifesaver for communicating with locals. My clients love the cultural sensitivity and safety features."
+            author="Marco"
+            role="Professional Tour Guide"
+            delay={0.2}
+          />
+        </div>
+      </section>
+
+      {/* Enhanced FAQ Section */}
+      <section className="bg-white/3 border-t border-white/6 py-16">
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl text-white font-bold mb-4">Frequently asked questions</h2>
+            <p className="text-white/70">Everything you need to know about YatraRakshak</p>
+          </motion.div>
+          
+          <div className="space-y-6 text-white/90">
+            {[
+              {
+                question: "Is the data verified?",
+                answer: "We aggregate from official sources and community reports; critical alerts are escalated through partner channels and verified by government authorities."
+              },
+              {
+                question: "Can I contribute local updates?",
+                answer: "Yes — community reporting tools are available in the app and reviewed before publish. We value local insights while maintaining data quality."
+              },
+              {
+                question: "Which languages are supported?",
+                answer: "English and Hindi for full interface, with local languages for place names. More languages planned based on demand and community feedback."
+              },
+              {
+                question: "How secure is my data?",
+                answer: "We use blockchain technology for identity verification and AI for anonymized safety scoring. Your personal data is encrypted and never shared without consent."
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={faq.question}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/8 transition-all duration-300"
+              >
+                <h3 className="font-semibold text-lg mb-2">{faq.question}</h3>
+                <p className="text-white/70 leading-relaxed">{faq.answer}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <StatsPanel />
+      <HeritageCarousel />
+      <HowItWorks />
       <SiteFooter />
+      </div>
     </main>
   );
 }

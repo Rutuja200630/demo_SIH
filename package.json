@@ -111,5 +111,19 @@
     "vite": "^7.1.2",
     "vitest": "^3.2.4"
   },
-  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748",
+  "version": "1.0.0",
+  "description": "Futuristic, responsive full‑stack scaffold for real‑time tourist safety monitoring and incident response. Development‑only: mock AI/ML and Blockchain services are included and are hot‑swappable via env vars.",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Loki3306/demo_SIH.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Loki3306/demo_SIH/issues"
+  },
+  "homepage": "https://github.com/Loki3306/demo_SIH#readme"
 }

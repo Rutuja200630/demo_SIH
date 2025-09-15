@@ -107,5 +107,352 @@
 
   body {
     @apply bg-background text-foreground;
+    /* Improve mobile scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent zoom on input focus */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Mobile-first responsive typography */
+  h1 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+  }
+  
+  h2 {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+  
+  h3 {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+}
+
+/* Enhanced mobile touch targets */
+@layer components {
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  .mobile-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .mobile-text {
+    @apply text-sm sm:text-base;
+  }
+  
+  /* Enhanced button styles for mobile */
+  .btn-mobile {
+    @apply px-6 py-3 min-h-[48px] text-base rounded-xl font-semibold transition-all duration-300;
+  }
+  
+  /* Mobile-optimized cards */
+  .card-mobile {
+    @apply p-4 sm:p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur;
+  }
+  
+  /* Text utilities */
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Map menu draggable handle and hidden state */
+.map-menu-hidden {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+}
+.map-menu {
+  cursor: grab;
+  pointer-events: auto;
+}
+.map-menu:active { cursor: grabbing; }
+
+/* Enhanced mobile map controls */
+@media (max-width: 768px) {
+  .map-menu {
+    @apply text-xs p-2 gap-2;
+  }
+  
+  .map-menu select {
+    @apply text-xs px-1 py-1;
+  }
+  
+  .map-menu input[type="checkbox"] {
+    @apply w-3 h-3;
+  }
+}
+
+/* Tourism themed landing background with enhanced effects */
+.landing-hero-bg {
+  /* Tourism palette: warm sunrise + teal accents, enhanced visual effects */
+  --sun: 25 90% 60%;
+  --teal: 185 60% 40%;
+  --orange: 30 100% 65%;
+  --purple: 270 60% 45%;
+  --saffron: 25 100% 55%;
+  --green: 125 60% 45%;
+  
+  /* Light mode background */
+  background-color: hsl(35 40% 96%);
+  background-image:
+    /* Saffron and green gradients for Indian flag inspiration */
+    linear-gradient(135deg, hsla(var(--saffron), 0.08) 0%, transparent 25%, hsla(var(--green), 0.06) 50%, transparent 75%, hsla(var(--orange), 0.08) 100%),
+    /* Heritage monuments silhouette pattern */
+    radial-gradient(1200px 400px at 20% 30%, rgba(255,153,51,0.05), transparent 40%),
+    radial-gradient(800px 300px at 80% 20%, rgba(19,136,8,0.04), transparent 35%),
+    radial-gradient(1000px 350px at 50% 85%, rgba(255,103,31,0.06), transparent 30%),
+    /* Subtle texture pattern */
+    linear-gradient(45deg, rgba(139,69,19,0.02) 0%, rgba(255,215,0,0.02) 25%, rgba(139,69,19,0.02) 50%, rgba(255,215,0,0.02) 75%, rgba(139,69,19,0.02) 100%),
+    /* Base warm gradient */
+    linear-gradient(180deg, rgba(255,248,220,0.8), rgba(253,245,230,0.9));
+  
+  background-size: 
+    100% 100%,
+    1200px 400px,
+    800px 300px, 
+    1000px 350px,
+    100px 100px,
+    100% 100%;
+    
+  background-position:
+    center center,
+    20% 30%,
+    80% 20%,
+    50% 85%,
+    0 0,
+    center center;
+    
+  background-blend-mode: screen, overlay, overlay, overlay, multiply, normal;
+  background-attachment: local;
+  
+  /* Add texture pattern */
+  position: relative;
+}
+
+/* Dark mode background */
+.dark .landing-hero-bg {
+  background-color: hsl(210 20% 8%);
+  background-image:
+    /* Enhanced dark mode gradients */
+    linear-gradient(135deg, hsla(var(--sun), 0.12) 0%, transparent 25%, hsla(var(--teal), 0.08) 50%, transparent 75%, hsla(var(--purple), 0.1) 100%),
+    /* Radial highlights */
+    radial-gradient(1200px 800px at 15% 25%, rgba(255,165,0,0.08), transparent 40%),
+    radial-gradient(800px 600px at 85% 15%, rgba(138,43,226,0.06), transparent 35%),
+    radial-gradient(1000px 500px at 50% 80%, rgba(0,191,255,0.04), transparent 30%),
+    /* Mesh gradient base */
+    linear-gradient(45deg, rgba(30,41,59,0.9) 0%, rgba(15,23,42,0.95) 25%, rgba(30,41,59,0.9) 50%, rgba(15,23,42,0.95) 75%, rgba(30,41,59,0.9) 100%),
+    /* Final dark overlay */
+    linear-gradient(180deg, rgba(2,6,23,0.8), rgba(2,6,23,0.95));
+}
+
+/* Enhanced decorative elements for light mode */
+.landing-hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    /* Heritage architecture pattern - light mode */
+    radial-gradient(circle at 25% 25%, rgba(139,69,19,0.03) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255,140,0,0.02) 1px, transparent 1px),
+    /* Traditional mandala pattern */
+    conic-gradient(from 0deg at 50% 50%, rgba(255,153,51,0.01) 0deg, transparent 60deg, rgba(19,136,8,0.01) 120deg, transparent 180deg, rgba(255,153,51,0.01) 240deg, transparent 300deg);
+  background-size: 60px 60px, 40px 40px, 200px 200px;
+  background-position: 0 0, 30px 30px, center center;
+  pointer-events: none;
+}
+
+/* Dark mode decorative elements */
+.dark .landing-hero-bg::before {
+  background-image:
+    /* Subtle dot pattern - dark mode */
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.02) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 50px 50px, 30px 30px;
+  background-position: 0 0, 25px 25px;
+}
+
+/* Animated aurora effect - light mode */
+.landing-hero-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(255,153,51,0.02) 40%, transparent 50%),
+    linear-gradient(-45deg, transparent 40%, rgba(19,136,8,0.015) 50%, transparent 60%),
+    linear-gradient(90deg, transparent 20%, rgba(255,103,31,0.015) 30%, transparent 40%);
+  background-size: 300% 300%, 250% 250%, 200% 200%;
+  animation: aurora-light 25s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Dark mode aurora */
+.dark .landing-hero-bg::after {
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(138,43,226,0.03) 40%, transparent 50%),
+    linear-gradient(-45deg, transparent 40%, rgba(255,165,0,0.02) 50%, transparent 60%),
+    linear-gradient(90deg, transparent 20%, rgba(0,191,255,0.02) 30%, transparent 40%);
+  animation: aurora 20s ease-in-out infinite;
+}
+
+@keyframes aurora-light {
+  0%, 100% {
+    background-position: 0% 0%, 100% 100%, 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%, 0% 0%, 100% 0%;
+  }
+  50% {
+    background-position: 50% 100%, 50% 50%, 50% 100%;
+  }
+  75% {
+    background-position: 0% 50%, 100% 0%, 0% 0%;
+  }
+}
+
+@keyframes aurora {
+  0%, 100% {
+    background-position: 0% 0%, 100% 100%, 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%, 0% 0%, 100% 0%;
+  }
+  50% {
+    background-position: 50% 100%, 50% 50%, 50% 100%;
+  }
+  75% {
+    background-position: 0% 50%, 100% 0%, 0% 0%;
+  }
+}
+
+/* Responsive background adjustments */
+@media (max-width: 768px) {
+  .landing-hero-bg {
+    background-image:
+      linear-gradient(180deg, hsla(var(--sun), 0.04), transparent 25%),
+      linear-gradient(180deg, rgba(2,6,23,0.8), rgba(2,6,23,0.95));
+  }
+}
+
+/* Subtle decorative wave near the bottom to evoke landscapes */
+.landing-hero-bg::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  background: radial-gradient(50% 100% at 50% 0%, rgba(0,0,0,0.08), transparent 40%);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .landing-hero-bg::after {
+    height: 180px;
+  }
+}
+
+/* Ensure hero container uses positioning context */
+.landing-hero-bg > * { position: relative; }
+
+/* Tourism palette variables to use across UI */
+:root {
+  --tourism-sun: 30 95% 58%;
+  --tourism-teal: 185 65% 42%;
+  --tourism-earth: 25 30% 18%;
+}
+
+/* Menu show button */
+.menu-show-button { z-index: 1100; }
+
+/* Drag handle */
+.drag-handle { user-select: none; }
+
+.map-menu { transition: transform 120ms ease; }
+
+/* Enhanced animations with reduced motion support */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in { animation: fadeIn 480ms ease both; }
+  .menu-pop { transition: transform 200ms cubic-bezier(.2,.9,.2,1), opacity 160ms; }
+  .menu-pop-enter { opacity: 0; transform: scale(.96); }
+  .menu-pop-enter-active { opacity: 1; transform: scale(1); }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .map-marker-hover:hover { transform: scale(1.08); transition: transform 160ms ease; }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .landing-hero-bg::after {
+    animation: none !important;
+  }
+  
+  .dark .landing-hero-bg::after {
+    animation: none !important;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  /* Improve touch interactions */
+  button, a[role="button"] {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  /* Optimize spacing for small screens */
+  .container {
+    @apply px-4;
+  }
+  
+  /* Adjust grid layouts for mobile */
+  .mobile-stack {
+    @apply flex flex-col space-y-4;
+  }
+  
+  /* Improve readability on mobile */
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-grid {
+    @apply grid-cols-2;
+  }
+}
+
+/* Desktop enhancements */
+@media (min-width: 1025px) {
+  .desktop-grid {
+    @apply grid-cols-3;
+  }
+  
+  /* Enhanced hover effects for desktop */
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    transition: transform 0.2s ease;
   }
 }
