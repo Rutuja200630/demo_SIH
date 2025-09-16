@@ -78,7 +78,8 @@ const heritagePlaces: HeritagePlace[] = [
     description: "A 73-meter tall tapering tower of victory, built of red sandstone and marble. Represents the beginning of Muslim rule in India and Indo-Islamic architecture.",
     yearBuilt: "1192-1220",
     visitors: "1.5 million annually",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop",
+    // Use a local asset as a reliable fallback; replace with a high-res Qutub Minar image at /public/heritage/qutub.jpg for production
+    image: "/icons/orchid.svg",
     significance: "Islamic architecture, victory monument, cultural synthesis"
   }
 ];
@@ -151,6 +152,7 @@ export default function HeritageCarousel() {
                       transition={{ duration: 0.3 }}
                       src={heritagePlaces[currentIndex].image}
                       alt={heritagePlaces[currentIndex].name}
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/placeholder.svg'; }}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
