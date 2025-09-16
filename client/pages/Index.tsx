@@ -473,7 +473,7 @@ export default function Index() {
           {/* (Indicators removed as requested) */}
         </div>
       </section>
-
+//hey
       {/* Enhanced FAQ Section */}
       <section className="bg-muted/20 border-t border-border py-16">
         <div className="max-w-4xl mx-auto px-6">
